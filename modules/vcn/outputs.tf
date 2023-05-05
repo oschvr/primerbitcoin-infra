@@ -7,3 +7,10 @@ output "subnets_map" {
     for s in oci_core_subnet.subnets : s.display_name => s.id
   }
 }
+
+
+output "subnets_id" {
+  value = [
+    for s in oci_core_subnet.subnets : s.id
+  ]
+}

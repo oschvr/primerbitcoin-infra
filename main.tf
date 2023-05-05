@@ -30,3 +30,14 @@ module "network" {
 
   freeform_tags = var.freeform_tags
 }
+
+module "instance" {
+  source = "./modules/instance"
+  display_name =  "${var.app_name}_instance"
+  compartment_id = oci_identity_compartment.prod.id
+  subnet_id = module.network.subnets_id[0]
+  shape = "VM.Standard.E2.1.Micro"
+  image_id = var.image_id
+  depends_on = [module.network]
+  freeform_tags = var.freeform_tags
+}
