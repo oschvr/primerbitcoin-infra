@@ -1,4 +1,4 @@
-# sys.argv[1]/first param should be 
+# sys.argv[1]/first param should be the compartment id
 # "ocid1.tenancy.oc1..aaaaaaaam62jf3kca2gz5i46fagbaymp5masg7j5p36k4fpothm4gdw5yv3a"
 
 # Get availability domains from OCI by specifiying a compartment

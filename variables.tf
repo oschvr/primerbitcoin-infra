@@ -1,5 +1,5 @@
-variable "compartment_id" {
-  description = "OCID of compartment where instance will be deployed"
+variable "tenancy_id" {
+  description = "OCID of tenancy where instance will be deployed"
   type        = string
 }
 
@@ -18,8 +18,13 @@ variable "config_profile" {
   type        = string
 }
 
+variable "freeform_tags" {
+  description = "Free form tags"
+  type        = any
+}
 
 
-
-
-
+variable "compartment_name" {
+  description = "Compartment name"
+  type        = string
+}

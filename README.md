@@ -1,0 +1,1 @@
+oci network subnet create --cidr-block "172.16.0.0/16" --compartment-id ocid1.compartment.oc1..aaaaaaaa4xcpuhgrelfcpchgektpwaegyugprsqlork2cov6chjg5u3orgwa --vcn-id ocid1.vcn.oc1.uk-london-1.amaaaaaahgl34nqaywvvfngrtvihbt2xiv74q3677qrz274glp6a3indvppq --display-name test --profile oschvr
