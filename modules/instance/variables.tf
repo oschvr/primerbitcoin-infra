@@ -34,3 +34,8 @@ variable "freeform_tags" {
   description = "Free form tags"
   type        = any
 }
+
+variable "nsg_ids" {
+  description = "List of NSG OCIDs to attach to instance"
+  type = list(string)
+}

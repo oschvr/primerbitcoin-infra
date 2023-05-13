@@ -14,3 +14,7 @@ output "subnets_id" {
     for s in oci_core_subnet.subnets : s.id
   ]
 }
+
+output "ssh_nsg_id" {
+  value = oci_core_network_security_group.ssh.id
+}

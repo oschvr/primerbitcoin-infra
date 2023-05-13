@@ -24,3 +24,8 @@ variable "freeform_tags" {
   description = "Free form tags"
   type        = any
 }
+
+variable "ssh_cidr" {
+  description = "Trusted CIDR block to allow in NSG"
+  type = string
+}

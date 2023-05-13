@@ -38,3 +38,27 @@ resource "oci_core_subnet" "subnets" {
   route_table_id            = oci_core_route_table.internet_gateway_route_table.id
   freeform_tags             = var.freeform_tags
 }
+
+resource "oci_core_network_security_group" "ssh" {
+    display_name = "ssh"
+    compartment_id = var.compartment_id
+    vcn_id = oci_core_vcn.vcn.id
+}
+
+resource "oci_core_network_security_group_security_rule" "ssh_rules" {
+    #Required
+    network_security_group_id = oci_core_network_security_group.ssh.id
+    
+    description = "Allow ssh from trusted CIDR"
+    direction = "INGRESS"
+    protocol = "6" # tcp
+    source = var.ssh_cidr
+    source_type          = "CIDR_BLOCK"
+    destination = null
+    tcp_options {
+        destination_port_range {
+            min = 22
+            max = 22
+        }
+    }
+}
