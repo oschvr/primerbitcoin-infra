@@ -5,7 +5,7 @@ variable "tenancy_id" {
 
 variable "image_id" {
   description = "OCID of ubuntu 22.04 minimal image for uk-london-1 region"
-  type = string
+  type        = string
 }
 
 variable "app_name" {

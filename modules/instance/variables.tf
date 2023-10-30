@@ -5,17 +5,17 @@ variable "compartment_id" {
 
 variable "display_name" {
   description = "Display name of instance"
-  type = string
+  type        = string
 }
 
 variable "subnet_id" {
   description = "OCID of subnet where instance will be deployed"
-  type = string
+  type        = string
 }
 
 variable "image_id" {
   description = "OCID of ubuntu 22.04 minimal image for uk-london-1 region"
-  type = string
+  type        = string
 }
 
 variable "shape" {
@@ -26,8 +26,8 @@ variable "shape" {
   # Ampere A1 Compute instances (Arm processor): All tenancies get the first 3,000 OCPU hours and 18,000 GB hours per month for free for VM instances using the VM.Standard.A1.Flex shape, which has an Arm processor. For Always Free tenancies, this is equivalent to 4 OCPUs and 24 GB of memory.
 
   description = "Shape of OCI Instance. The shape determines the number of CPUs and the amount of memory allocated to the instance. Using Always free shapes"
-  type = string
-  default = "VM.Standard.E2.1.Micro"
+  type        = string
+  default     = "VM.Standard.E2.1.Micro"
 }
 
 variable "freeform_tags" {
@@ -37,5 +37,10 @@ variable "freeform_tags" {
 
 variable "nsg_ids" {
   description = "List of NSG OCIDs to attach to instance"
-  type = list(string)
+  type        = list(string)
+}
+
+variable "reserved_ip" {
+  type        = string
+  default     = "RESERVED"
 }

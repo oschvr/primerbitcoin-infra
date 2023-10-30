@@ -18,3 +18,7 @@ output "subnets_id" {
 output "ssh_nsg_id" {
   value = oci_core_network_security_group.ssh.id
 }
+
+output "https_nsg_id" {
+  value = oci_core_network_security_group.https.id
+}

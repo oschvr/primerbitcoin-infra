@@ -15,7 +15,8 @@ module "network" {
   display_name   = var.app_name
   compartment_id = oci_identity_compartment.prod.id
   cidr_blocks    = ["172.16.0.0/16"]
-  ssh_cidr = "82.47.230.248/32"
+  ssh_cidr       = "109.134.249.219/32"
+  https_cidr     = "109.134.249.219/32"
   subnets = {
     public_subnet_1 = {
       name       = "${var.app_name}_public_subnet_1",
@@ -33,13 +34,13 @@ module "network" {
 }
 
 module "instance" {
-  source = "./modules/instance"
-  display_name =  "${var.app_name}_instance"
+  source         = "./modules/instance"
+  display_name   = var.app_name
   compartment_id = oci_identity_compartment.prod.id
-  subnet_id = module.network.subnets_id[0]
-  shape = "VM.Standard.E2.1.Micro"
-  image_id = var.image_id
-  nsg_ids = [ module.network.ssh_nsg_id ]
-  depends_on = [module.network]
-  freeform_tags = var.freeform_tags
+  subnet_id      = module.network.subnets_id[0]
+  shape          = "VM.Standard.E2.1.Micro"
+  image_id       = var.image_id
+  nsg_ids        = [module.network.ssh_nsg_id, module.network.https_nsg_id]
+  depends_on     = [module.network]
+  freeform_tags  = var.freeform_tags
 }

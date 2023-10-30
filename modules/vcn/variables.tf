@@ -27,5 +27,10 @@ variable "freeform_tags" {
 
 variable "ssh_cidr" {
   description = "Trusted CIDR block to allow in NSG"
-  type = string
+  type        = string
+}
+
+variable "https_cidr" {
+  description = "Trusted CIDR block to allow in NSG"
+  type        = string
 }
