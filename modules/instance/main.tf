@@ -28,10 +28,46 @@ resource "oci_core_instance" "instance" {
     source_type = "image"
   }
 
+  provisioner "file" {
+    source = "../primerbitcoin/build/primerbitcoin-linux-amd64"
+    destination = "/tmp/primerbitcoin"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.ssh/primerbitcoin-root")
+      host = self.public_ip
+    } 
+  }
+
+  provisioner "file" {
+    source = "../primerbitcoin/.env"
+    destination = "/tmp/.env-init"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.ssh/primerbitcoin-root")
+      host = self.public_ip
+    } 
+  }
+
+  provisioner "file" {
+    source = "../primerbitcoin/application.yaml"
+    destination = "/tmp/application.yaml-init"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.ssh/primerbitcoin-root")
+      host = self.public_ip
+    } 
+  }
+
   metadata = {
     user_data           = base64encode(file("./modules/instance/cloud-init.sh"))
     ssh_authorized_keys = <<EOF
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKAZhrKQTMZLSC/XrI5vkWSDki1y2gu0HKm1InBz0pT5 oschvr@protonmail.com
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKSSne/F4dz0r2rJ9U9fXG1vnto4YPzwihxTacK8yO9z oschvr@protonmail.com
   EOF
   }
 
