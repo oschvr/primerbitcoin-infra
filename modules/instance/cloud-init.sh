@@ -143,8 +143,8 @@ sudo systemctl start primerbitcoin
 
 # Create encryption secret
 echo "export ENCRYPTION_KEY=$(openssl rand -base64 32)" >> /home/primerbitcoin/.bashrc
-echo "export GITHUB_TOKEN=<GH_TOKEN" >> /home/primerbitcoin/.bashrc
-#echo "export GITHUB_TOKEN=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" >> /home/primerbitcoin/.bashrc
+echo "export GITHUB_TOKEN=<GH_TOKEN>" >> /home/primerbitcoin/.bashrc
+#echo "export GITHUB_TOKEN=github_pat_***" >> /home/primerbitcoin/.bashrc
 
 # Configure global git
 git config --global user.email "oschvr@protonmail.com"
